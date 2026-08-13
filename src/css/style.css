@@ -1,0 +1,138 @@
+/* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: "Poppins", sans-serif;;
+            overflow: hidden; /* Evita rolagem caso o vídeo passe da tela */
+            background-color: #000;
+        }
+
+        /* Container do vídeo de fundo */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que o vídeo preencha toda a tela sem distorcer */
+            pointer-events: none;
+        }
+
+        /* Overlay escuro para deixar o vídeo quase invisível */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .88);
+            z-index: 2;
+        }
+
+        /* Container do conteúdo principal */
+        .content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+            
+            /* Animação suave de entrada */
+            animation: fadeUp 1.2s cubic-bezier(.16, 1, .3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Elementos de texto e imagem */
+        .logo {
+            max-width: 500px; /* Tamanho base da logo */
+            width: 100%;
+            height: auto;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,.3));
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            max-width: 600px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+
+        /* Keyframes da animação */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    /* =========================================
+                Botão do Instagram
+    ========================================= */
+.btn-instagram {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 14px 32px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(.9rem, 2vw, 1rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid rgba(255, 0, 0, 0.4);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    /* Transição suave para a interatividade */
+    transition: all .4s cubic-bezier(.16, 1, .3, 1);
+    z-index: 1;
+}
+
+/* Efeito de brilho "invisível" que passa ao passar o mouse */
+.btn-instagram::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+    transition: all .6s ease;
+    z-index: -1;
+}
+
+/* Interatividade no Hover */
+.btn-instagram:hover {
+    border-color: #ff0000;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
+}
+
+.btn-instagram:hover::before {
+    left: 100%;
+}
