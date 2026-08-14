@@ -7,7 +7,7 @@
 
         body, html {
             height: 100%;
-            font-family: "Poppins", sans-serif;;
+            font-family: "Poppins", sans-serif;
             overflow: hidden; /* Evita rolagem caso o vídeo passe da tela */
             background-color: #000;
         }
@@ -91,9 +91,9 @@
             }
         }
 
-    /* =========================================
-                Botão do Instagram
-    ========================================= */
+/* =========================================
+   Botão Instagram
+   ========================================= */
 .btn-instagram {
     display: inline-block;
     margin-top: 40px;
@@ -104,7 +104,7 @@
     font-size: clamp(.9rem, 2vw, 1rem);
     text-transform: uppercase;
     letter-spacing: 2px;
-    border: 2px solid rgba(255, 0, 0, 0.4);
+    border: 2px solid rgba(255, 0, 0, .4);
     border-radius: 50px;
     position: relative;
     overflow: hidden;
@@ -135,4 +135,81 @@
 
 .btn-instagram:hover::before {
     left: 100%;
+}
+
+/* =========================================
+   Copyright (Rodapé)
+   ========================================= */
+.copyright {
+    position: absolute;
+    bottom: 24px;
+    font-size: .85rem;
+    color: rgba(255, 255, 255, .5);
+    letter-spacing: 1px;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* =========================================
+   Badge de Lançamento (Pílula)
+   ========================================= */
+.release-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(255, 255, 255, .3);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: clamp(.75rem, 2vw, .9rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #e0e0e0;
+    margin-bottom: 24px;
+    backdrop-filter: blur(4px); /* Efeito de vidro fosco no fundo */
+    
+    /* Animação de destaque */
+    animation: pulseGlow 2.5s infinite alternate;
+
+    cursor: default; /* Dá pra usar 'pointer' se quiser fingir que é clicável */
+    transition: all .4s cubic-bezier(.16, 1, .3, 1);
+}
+
+.release-badge i {
+    color: #ff0000;
+
+    display: inline-block; /* Necessário para o ícone se mover */
+    transition: transform .4s ease;
+}
+
+/* Animação que faz a pílula "respirar" e brilhar levemente */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, .1);
+        border-color: rgba(255, 255, 255, .3);
+    }
+    100% {
+        box-shadow: 0 0 15px 0 rgba(255, 255, 255, .2);
+        border-color: rgba(255, 255, 255, .6);
+    }
+}
+
+/* =========================================
+   Hover do Badge de Lançamento
+   ========================================= */
+
+/* Quando passa o mouse no badge*/
+.release-badge:hover {
+    transform: scale(1.05) translateY(-3px); /* Aumenta um pouquinho e sobe */
+    background: rgba(175, 76, 76, 0.15); /* O fundo ganha um tom verde sutil */
+    border-color: #ff0000; /* A borda acende na cor do ícone */
+    box-shadow: 0 10px 25px rgba(175, 76, 97, 0.24); /* Brilho verde em volta */
+    animation: none; /* Pausa o pulso natural para não bugar o hover */
+}
+
+/* O Foguete decolando! */
+.release-badge:hover i {
+    transform: translate(4px, -1px) rotate(360deg); /* Foguete vai pra diagonal direita/cima */
 }
